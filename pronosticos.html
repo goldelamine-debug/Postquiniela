@@ -196,6 +196,22 @@
     </p>
 
   </main>
+<script>
+  const botones = document.querySelectorAll('.prediction button');
 
+  botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const grupo = boton.parentElement;
+
+      grupo.querySelectorAll('button').forEach(b => {
+        b.style.background = '#222';
+        b.style.borderColor = '#444';
+      });
+
+      boton.style.background = '#e00000';
+      boton.style.borderColor = '#e00000';
+    });
+  });
+</script>
 </body>
 </html>
