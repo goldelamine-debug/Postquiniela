@@ -125,7 +125,7 @@
     <h1>Pronósticos</h1>
     <p class="subtitle">Elige el resultado que crees que ocurrirá.</p>
 
-    <div class="match">
+    <div class="match" data-match-id="barcelona-real-sociedad">
       <div class="league">LALIGA</div>
 
       <div class="teams">
@@ -153,7 +153,7 @@
 </div>
     </div>
 
-    <div class="match">
+    <div class="match" data-match-id="valencia-sevilla">
       <div class="league">LALIGA</div>
 
       <div class="teams">
@@ -180,7 +180,7 @@
 </div>
     </div>
 
-    <div class="match">
+  <div class="match" data-match-id="barcelona-inter">
       <div class="league">CHAMPIONS LEAGUE</div>
 
       <div class="teams">
@@ -230,21 +230,30 @@ botones.forEach(boton => {
 });
 
 const marcadores = document.querySelectorAll('input[type="number"]');
+const partidos = document.querySelectorAll('.match');
 
-marcadores.forEach(input => {
-  input.addEventListener('input', () => {
-    localStorage.setItem('marcadores', JSON.stringify(
-      Array.from(marcadores).map(i => i.value)
-    ));
+partidos.forEach(partido => {
+  const id = partido.dataset.matchId;
+  const marcadores = partido.querySelectorAll('input[type="number"]');
+
+  marcadores.forEach(input => {
+    input.addEventListener('input', () => {
+      localStorage.setItem(
+        'marcador_' + id,
+        JSON.stringify(Array.from(marcadores).map(i => i.value))
+      );
+    });
   });
-});
 
-const guardados = JSON.parse(localStorage.getItem('marcadores') || '[]');
+  const guardados = JSON.parse(
+    localStorage.getItem('marcador_' + id) || '[]'
+  );
 
-marcadores.forEach((input, i) => {
-  if (guardados[i] !== undefined) {
-    input.value = guardados[i];
-  }
+  marcadores.forEach((input, i) => {
+    if (guardados[i] !== undefined) {
+      input.value = guardados[i];
+    }
+  });
 });
   const elecciones = document.querySelectorAll('.prediction button');
 
