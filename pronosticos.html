@@ -246,6 +246,36 @@ marcadores.forEach((input, i) => {
     input.value = guardados[i];
   }
 });
+  const elecciones = document.querySelectorAll('.prediction button');
+
+elecciones.forEach((boton, indice) => {
+  boton.addEventListener('click', () => {
+    const grupo = boton.parentElement;
+    const botonesGrupo = Array.from(grupo.querySelectorAll('button'));
+    const posicion = botonesGrupo.indexOf(boton);
+
+    localStorage.setItem(
+      'eleccion_' + Math.floor(indice / 3),
+      posicion
+    );
+  });
+});
+
+elecciones.forEach((boton, indice) => {
+  const guardado = localStorage.getItem(
+    'eleccion_' + Math.floor(indice / 3)
+  );
+
+  if (guardado !== null) {
+    const grupo = boton.parentElement;
+    const botonesGrupo = Array.from(grupo.querySelectorAll('button'));
+
+    if (botonesGrupo.indexOf(boton) === Number(guardado)) {
+      boton.style.background = '#e00000';
+      boton.style.borderColor = '#e00000';
+    }
+  }
+});
 </script>
 </body>
 </html>
