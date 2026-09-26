@@ -215,19 +215,37 @@
 <script>
   const botones = document.querySelectorAll('.prediction button');
 
-  botones.forEach(boton => {
-    boton.addEventListener('click', () => {
-      const grupo = boton.parentElement;
+botones.forEach(boton => {
+  boton.addEventListener('click', () => {
+    const grupo = boton.parentElement;
 
-      grupo.querySelectorAll('button').forEach(b => {
-        b.style.background = '#222';
-        b.style.borderColor = '#444';
-      });
-
-      boton.style.background = '#e00000';
-      boton.style.borderColor = '#e00000';
+    grupo.querySelectorAll('button').forEach(b => {
+      b.style.background = '#222';
+      b.style.borderColor = '#444';
     });
+
+    boton.style.background = '#e00000';
+    boton.style.borderColor = '#e00000';
   });
+});
+
+const marcadores = document.querySelectorAll('input[type="number"]');
+
+marcadores.forEach(input => {
+  input.addEventListener('input', () => {
+    localStorage.setItem('marcadores', JSON.stringify(
+      Array.from(marcadores).map(i => i.value)
+    ));
+  });
+});
+
+const guardados = JSON.parse(localStorage.getItem('marcadores') || '[]');
+
+marcadores.forEach((input, i) => {
+  if (guardados[i] !== undefined) {
+    input.value = guardados[i];
+  }
+});
 </script>
 </body>
 </html>
