@@ -4,9 +4,182 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PostQuiniela</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0b0b;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #e00000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #e00000;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #e00000;
+    }
+
+    .hero p {
+      color: #aaa;
+      font-size: 19px;
+      margin-bottom: 35px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #e00000;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: #b00000;
+    }
+
+    .section {
+      padding: 60px 8%;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 32px;
+      margin-bottom: 35px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 12px;
+      padding: 30px;
+      width: 280px;
+    }
+
+    .card h3 {
+      color: #e00000;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #aaa;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid #222;
+      color: #666;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>PostQuiniela</h1>
-  <p>Web de pronósticos de fútbol</p>
+
+  <header>
+    <div class="logo">Post<span>Quiniela</span></div>
+
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Pronósticos</a>
+      <a href="#">Clasificación</a>
+      <a href="#">Mi perfil</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Demuestra que sabes de <span>fútbol</span></h1>
+    <p>Pronostica partidos, consigue puntos y escala posiciones.</p>
+    <a href="#" class="button">Empezar a pronosticar</a>
+  </section>
+
+  <section class="section">
+    <h2>¿Cómo funciona?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>1. Pronostica</h3>
+        <p>Elige el resultado de los partidos antes de que comiencen.</p>
+      </div>
+
+      <div class="card">
+        <h3>2. Consigue puntos</h3>
+        <p>1 punto por acertar el resultado y 3 puntos por acertar el marcador exacto.</p>
+      </div>
+
+      <div class="card">
+        <h3>3. Sube puestos</h3>
+        <p>Compite con todos los usuarios y escala en la clasificación.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 PostQuiniela
+  </footer>
+
 </body>
 </html>
