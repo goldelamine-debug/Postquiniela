@@ -257,27 +257,39 @@ partidos.forEach(partido => {
 });
   const elecciones = document.querySelectorAll('.prediction button');
 
-elecciones.forEach((boton, indice) => {
+elecciones.forEach(boton => {
   boton.addEventListener('click', () => {
-    const grupo = boton.parentElement;
-    const botonesGrupo = Array.from(grupo.querySelectorAll('button'));
+    const partido = boton.closest('.match');
+    const id = partido.dataset.matchId;
+
+    const botonesGrupo = Array.from(
+      boton.parentElement.querySelectorAll('button')
+    );
+
     const posicion = botonesGrupo.indexOf(boton);
 
-    localStorage.setItem(
-      'eleccion_' + Math.floor(indice / 3),
-      posicion
-    );
+    botonesGrupo.forEach(b => {
+      b.style.background = '#222';
+      b.style.borderColor = '#444';
+    });
+
+    boton.style.background = '#e00000';
+    boton.style.borderColor = '#e00000';
+
+    localStorage.setItem('eleccion_' + id, posicion);
   });
 });
 
-elecciones.forEach((boton, indice) => {
-  const guardado = localStorage.getItem(
-    'eleccion_' + Math.floor(indice / 3)
-  );
+elecciones.forEach(boton => {
+  const partido = boton.closest('.match');
+  const id = partido.dataset.matchId;
+
+  const guardado = localStorage.getItem('eleccion_' + id);
 
   if (guardado !== null) {
-    const grupo = boton.parentElement;
-    const botonesGrupo = Array.from(grupo.querySelectorAll('button'));
+    const botonesGrupo = Array.from(
+      boton.parentElement.querySelectorAll('button')
+    );
 
     if (botonesGrupo.indexOf(boton) === Number(guardado)) {
       boton.style.background = '#e00000';
