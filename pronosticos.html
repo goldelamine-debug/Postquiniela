@@ -299,7 +299,7 @@ elecciones.forEach(boton => {
 
   if (guardado !== null) {
     const botonesGrupo = Array.from(
-      boton.parentElement.querySelectorAll('button')
+      boton.parentElement.querySelectorAll('btton')
     );
 
     if (botonesGrupo.indexOf(boton) === Number(guardado)) {
@@ -309,5 +309,17 @@ elecciones.forEach(boton => {
   }
 });
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = 'https://jotbnhmusmlrnqtswnkx.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_-OyPy0c9FWB6alBarpEIvQ_bWoWE0S7';
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+</script>
+
 </body>
 </html>
