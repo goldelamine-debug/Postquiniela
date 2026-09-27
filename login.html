@@ -66,6 +66,20 @@
       alert("EL BOTÓN FUNCIONA");
     }
   </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const SUPABASE_URL = 'https://jotbnhmusmlrnqtswnkx.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_-OyPy0c9FWB6alBarpEIvQ_bWoWE0S7';
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+document.getElementById('iniciarSesion').addEventListener('click', async () => {
+  alert('BOTÓN CONECTADO');
+});
+</script>
 </body>
 </html>
