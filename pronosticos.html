@@ -220,27 +220,39 @@
 </div>
   </main>
 <script>
- document.getElementById('guardarPronosticos').addEventListener('click', () => {
-   localstorage.setItem('pronosticos_confirmados', 'true');
-});alert('¡Pronósticos guardados correctamente!');
-});
-  const botones = document.querySelectorAll('.prediction button');
+document.getElementById('guardarPronosticos').addEventListener('click', () => {
+  const partidos = document.querySelectorAll('.match');
+  let completos = true;
 
-botones.forEach(boton => {
-  boton.addEventListener('click', () => {
-    const grupo = boton.parentElement;
+  partidos.forEach(partido => {
+    const id = partido.dataset.matchId;
 
-    grupo.querySelectorAll('button').forEach(b => {
-      b.style.background = '#222';
-      b.style.borderColor = '#444';
-    });
+    const eleccion = localStorage.getItem('eleccion_' + id);
 
-    boton.style.background = '#e00000';
-    boton.style.borderColor = '#e00000';
+    const marcador = JSON.parse(
+      localStorage.getItem('marcador_' + id) || '[]'
+    );
+
+    if (
+      eleccion === null ||
+      marcador.length !== 2 ||
+      marcador[0] === '' ||
+      marcador[1] === ''
+    ) {
+      completos = false;
+    }
   });
+
+  if (!completos) {
+    alert('Completa todos los pronósticos antes de guardar.');
+    return;
+  }
+
+  localStorage.setItem('pronosticos_confirmados', 'true');
+  alert('¡Pronósticos guardados correctamente!');
 });
 
-const marcadores = document.querySelectorAll('input[type="number"]');
+
 const partidos = document.querySelectorAll('.match');
 
 partidos.forEach(partido => {
@@ -266,7 +278,9 @@ partidos.forEach(partido => {
     }
   });
 });
-  const elecciones = document.querySelectorAll('.prediction button');
+
+
+const elecciones = document.querySelectorAll('.prediction button');
 
 elecciones.forEach(boton => {
   boton.addEventListener('click', () => {
@@ -291,6 +305,7 @@ elecciones.forEach(boton => {
   });
 });
 
+
 elecciones.forEach(boton => {
   const partido = boton.closest('.match');
   const id = partido.dataset.matchId;
@@ -299,7 +314,7 @@ elecciones.forEach(boton => {
 
   if (guardado !== null) {
     const botonesGrupo = Array.from(
-      boton.parentElement.querySelectorAll('btton')
+      boton.parentElement.querySelectorAll('button')
     );
 
     if (botonesGrupo.indexOf(boton) === Number(guardado)) {
