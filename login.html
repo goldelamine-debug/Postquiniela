@@ -88,5 +88,34 @@ function iniciarSesion() {
   alert("EL BOTÓN FUNCIONA");
 }
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = 'https://jotbnhmusmlrnqtswnkx.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_-OyPy0c9FWB6alBarpEIvQ_bWoWE0S7';
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+document.querySelector('button').addEventListener('click', async () => {
+
+  const email = document.querySelector('input[type="email"]').value;
+  const password = document.querySelector('input[type="password"]').value;
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  alert('¡Inicio de sesión correcto!');
+});
+</script>
 </body>
 </html>
