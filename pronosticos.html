@@ -220,8 +220,9 @@
 </div>
   </main>
 <script>
-  document.getElementById('guardarPronosticos').addEventListener('click', () => {
-  alert('¡Pronósticos guardados correctamente!');
+ document.getElementById('guardarPronosticos').addEventListener('click', () => {
+   localstorage.setItem('pronosticos_confirmados', 'true');
+});alert('¡Pronósticos guardados correctamente!');
 });
   const botones = document.querySelectorAll('.prediction button');
 
